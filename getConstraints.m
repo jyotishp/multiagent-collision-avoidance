@@ -39,4 +39,8 @@ function [c ceq] = getConstraints(agent, obstacles, control, dt)
             c(end+1) = -1*(control(1)*(pAbL(1))^2*(agent.velocity(1)) + control(2)*(pAbL(1))*(pAbL(2))*(agent.velocity(1)) - 0.5*(pAbL(1))^2*(agent.velocity(1))^2 + control(1)*(pAbL(1))*(pAbL(2))*(agent.velocity(2)) + control(2)*(pAbL(2))^2*(agent.velocity(2)) - 1.*(pAbL(1))*(pAbL(2))*(agent.velocity(1))*(agent.velocity(2)) - 0.5*(pAbL(2))^2*(agent.velocity(2))^2 - control(1)*(pAbL(1))^2*(obstacles(i).velocity(1)) - control(2)*(pAbL(1))*(pAbL(2))*(obstacles(i).velocity(1)) + 0.5*(pAbL(1))^2*(obstacles(i).velocity(1))^2 - control(1)*(pAbL(1))*(pAbL(2))*(obstacles(i).velocity(2)) - control(2)*(pAbL(2))^2*(obstacles(i).velocity(2)) + 1.*(pAbL(1))*(pAbL(2))*(obstacles(i).velocity(1))*(obstacles(i).velocity(2)) + 0.5*(pAbL(2))^2*(obstacles(i).velocity(2))^2);
         end
     end
+
+    % Kinematic constraints
+    % delVel = agent.velocity - control;
+    % c(end+1) = abs(atan2(delVel(2), delVel(1))) - pi/20;
 end
